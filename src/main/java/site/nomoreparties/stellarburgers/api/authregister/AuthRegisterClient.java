@@ -9,7 +9,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static site.nomoreparties.stellarburgers.constants.ApiUrls.AUTH_REGISTER;
 
 public class AuthRegisterClient {
-    @Step("Получение объекта юзера после запроса на регистрацию юзера")
+    @Step("Регистрация юзера")
     public static void registerUser(RegisterRequest requestBody) {
         sendRequestRegisterUser(requestBody)
                 .then().assertThat().statusCode(SC_OK);

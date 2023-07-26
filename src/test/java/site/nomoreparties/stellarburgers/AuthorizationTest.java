@@ -2,20 +2,22 @@ package site.nomoreparties.stellarburgers;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import site.nomoreparties.stellarburgers.api.models.RegisterRequest;
 import site.nomoreparties.stellarburgers.pageobject.AuthorizationPage;
-import site.nomoreparties.stellarburgers.pageobject.HeaderPage;
+import site.nomoreparties.stellarburgers.pageobject.BasePage;
 import site.nomoreparties.stellarburgers.pageobject.MainPage;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static site.nomoreparties.stellarburgers.api.ApiHelpers.deleteUser;
 import static site.nomoreparties.stellarburgers.api.authregister.AuthRegisterClient.registerUser;
 import static site.nomoreparties.stellarburgers.constants.ApiUrls.BASE_URL;
+import static site.nomoreparties.stellarburgers.constants.HeaderLabelName.LK;
 import static site.nomoreparties.stellarburgers.helpers.UserGenerator.generateUser;
 
+@DisplayName("Авторизация пользователя")
 public class AuthorizationTest extends BaseTest {
     static RegisterRequest body;
     private final String btnEnterOnMainPage = "вход по кнопке «Войти в аккаунт» на главной";
@@ -27,7 +29,6 @@ public class AuthorizationTest extends BaseTest {
     public void createTestData() {
         body = generateUser();
         registerUser(body);
-//        initConfig();
     }
 
     @AfterEach
@@ -36,14 +37,14 @@ public class AuthorizationTest extends BaseTest {
             deleteUser(body);
         }
     }
-
+    @DisplayName("Проверка успешного перехода на страницу авторизации из разных мест приложения")
     @ParameterizedTest
     @ValueSource(strings = {btnEnterOnMainPage,
             btnEnterLk,
             btnEnterOnRegistrationForm,
             btnEnterOnRecoverPassword})
     public void shouldUserAuthorizationSuccess(String condition) {
-        open(BASE_URL, MainPage.class);
+        open(BASE_URL);
         switch (condition) {
             case btnEnterOnMainPage: {
                 page(MainPage.class)
@@ -51,8 +52,8 @@ public class AuthorizationTest extends BaseTest {
             }
             break;
             case btnEnterLk: {
-                page(HeaderPage.class)
-                        .clickBtnLk();
+                page(BasePage.class)
+                        .clickBtnLabel(LK.getHeaderName());
             }
             break;
             case btnEnterOnRegistrationForm: {

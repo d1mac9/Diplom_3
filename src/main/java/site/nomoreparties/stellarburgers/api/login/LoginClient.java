@@ -8,7 +8,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static site.nomoreparties.stellarburgers.constants.ApiUrls.AUTH_LOGIN;
 
 public class LoginClient {
-    @Step("Отправка запроса на авторизацию юзера")
+    @Step("Отправка запроса на на получение accessToken юзера")
     public static String loginUserAndGetAccessToken(RegisterRequest body){
         return given()
                 .body(body)
