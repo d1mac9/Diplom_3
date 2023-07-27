@@ -5,10 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import site.nomoreparties.stellarburgers.api.models.RegisterRequest;
-import site.nomoreparties.stellarburgers.pageobject.AuthorizationPage;
-import site.nomoreparties.stellarburgers.pageobject.BasePage;
-import site.nomoreparties.stellarburgers.pageobject.LkPage;
-import site.nomoreparties.stellarburgers.pageobject.MainPage;
+import site.nomoreparties.stellarburgers.page_object.AuthorizationPage;
+import site.nomoreparties.stellarburgers.page_object.BasePage;
+import site.nomoreparties.stellarburgers.page_object.LkPage;
+import site.nomoreparties.stellarburgers.page_object.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;

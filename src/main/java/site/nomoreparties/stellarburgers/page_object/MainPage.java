@@ -1,4 +1,4 @@
-package site.nomoreparties.stellarburgers.pageobject;
+package site.nomoreparties.stellarburgers.page_object;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -12,7 +12,7 @@ public class MainPage extends BasePage {
     private SelenideElement btnLogin;
 
     @Step("Нажать кнопку Войти в аккаунт")
-    public AuthorizationPage clickBtnLogin(){
+    public AuthorizationPage clickBtnLogin() {
         btnLogin.click();
         return page(AuthorizationPage.class);
     }

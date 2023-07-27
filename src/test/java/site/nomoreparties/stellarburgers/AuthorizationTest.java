@@ -6,11 +6,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import site.nomoreparties.stellarburgers.api.models.RegisterRequest;
-import site.nomoreparties.stellarburgers.pageobject.AuthorizationPage;
-import site.nomoreparties.stellarburgers.pageobject.BasePage;
-import site.nomoreparties.stellarburgers.pageobject.MainPage;
+import site.nomoreparties.stellarburgers.page_object.AuthorizationPage;
+import site.nomoreparties.stellarburgers.page_object.BasePage;
+import site.nomoreparties.stellarburgers.page_object.MainPage;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.page;
 import static site.nomoreparties.stellarburgers.api.ApiHelpers.deleteUser;
 import static site.nomoreparties.stellarburgers.api.authregister.AuthRegisterClient.registerUser;
 import static site.nomoreparties.stellarburgers.constants.ApiUrls.BASE_URL;
@@ -37,6 +38,7 @@ public class AuthorizationTest extends BaseTest {
             deleteUser(body);
         }
     }
+
     @DisplayName("Проверка успешного перехода на страницу авторизации из разных мест приложения")
     @ParameterizedTest
     @ValueSource(strings = {btnEnterOnMainPage,

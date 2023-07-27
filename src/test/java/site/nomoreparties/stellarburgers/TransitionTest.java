@@ -5,10 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import site.nomoreparties.stellarburgers.api.models.RegisterRequest;
-import site.nomoreparties.stellarburgers.pageobject.BasePage;
-import site.nomoreparties.stellarburgers.pageobject.LkPage;
+import site.nomoreparties.stellarburgers.page_object.BasePage;
+import site.nomoreparties.stellarburgers.page_object.LkPage;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.page;
 import static site.nomoreparties.stellarburgers.api.ApiHelpers.deleteUser;
 import static site.nomoreparties.stellarburgers.api.authregister.AuthRegisterClient.registerUser;
 import static site.nomoreparties.stellarburgers.api.login.LoginClient.loginUserAndGetAccessToken;
@@ -52,15 +53,16 @@ public class TransitionTest extends BaseTest {
 
     @DisplayName("Переход в конструктор при нажатии на лейбл")
     @Test
-    public void shouldOpenConstructorPageByClicking(){
+    public void shouldOpenConstructorPageByClicking() {
         page(BasePage.class)
                 .clickOnMainLabel()
                 .checkLabelIsActive(CONSTRUCTOR.getHeaderName());
         checkUrl(BASE_URL);
     }
+
     @DisplayName("Переход в конструктор при нажатии на соответствующий пункт в заголовке")
     @Test
-    public void shouldOpenConstructorPageByClickingConstructor(){
+    public void shouldOpenConstructorPageByClickingConstructor() {
         page(BasePage.class)
                 .clickBtnLabel(CONSTRUCTOR.getHeaderName())
                 .checkLabelIsActive(CONSTRUCTOR.getHeaderName());

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import site.nomoreparties.stellarburgers.api.models.RegisterRequest;
-import site.nomoreparties.stellarburgers.pageobject.MainPage;
+import site.nomoreparties.stellarburgers.page_object.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static site.nomoreparties.stellarburgers.api.ApiHelpers.deleteUser;
